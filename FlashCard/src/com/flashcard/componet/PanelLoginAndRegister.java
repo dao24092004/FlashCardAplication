@@ -9,6 +9,8 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -43,6 +45,14 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         register.add(label);
         MyTextField txtUser = new MyTextField();
        // txtUser.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/user.png")));
+        String iconPath = "src/com/flashcard/icon/user.png";
+        File iconFile = new File(iconPath);
+        if (iconFile.exists()) {
+            txtUser.setPrefixIcon(new ImageIcon(iconFile.getAbsolutePath()));
+        } else {
+            System.out.println("Icon not found at " + iconPath);
+        }
+
         txtUser.setHint("Name");
         register.add(txtUser, "w 60%");
         MyTextField txtEmail = new MyTextField();
