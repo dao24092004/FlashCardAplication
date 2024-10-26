@@ -1,6 +1,7 @@
 package com.flashcard.componet;
 
 
+import com.flashcard.swing.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GradientPaint;
@@ -12,11 +13,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.JLabel;
-
-import com.flashcard.swing.ButtonOutLine;
-
 import net.miginfocom.swing.MigLayout;
-
 
 public class PanelCover extends javax.swing.JPanel {
 
@@ -123,7 +120,7 @@ public class PanelCover extends javax.swing.JPanel {
         layout.setComponentConstraints(description1, "pad 0 " + v + "% 0 " + v + "%");
     }
 
-    public void login(boolean login) {
+    private void login(boolean login) {
         if (this.isLogin != login) {
             if (login) {
                 title.setText("hello, Friend!");
