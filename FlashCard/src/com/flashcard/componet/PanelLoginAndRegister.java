@@ -44,13 +44,13 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         label.setForeground(new Color(7, 164, 121));
         register.add(label);
         MyTextField txtUser = new MyTextField();
-       // txtUser.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/user.png")));
-        String iconPath = "src/com/flashcard/icon/user.png";
-        File iconFile = new File(iconPath);
-        if (iconFile.exists()) {
-            txtUser.setPrefixIcon(new ImageIcon(iconFile.getAbsolutePath()));
+        txtUser.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/user.png")));
+        String userPath = "src/com/flashcard/icon/user.png";
+        File userFile = new File(userPath);
+        if (userFile.exists()) {
+            txtUser.setPrefixIcon(new ImageIcon(userFile.getAbsolutePath()));
         } else {
-            System.out.println("Icon not found at " + iconPath);
+            System.out.println("Icon not found at " + userPath);
         }
 
         txtUser.setHint("Name");
