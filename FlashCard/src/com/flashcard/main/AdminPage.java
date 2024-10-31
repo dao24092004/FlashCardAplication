@@ -14,8 +14,8 @@ public class AdminPage extends javax.swing.JFrame {
         this.user = user;
         initComponents();
         getContentPane().setBackground(new Color(255, 255, 255));
-        lbUser.setText(user.getUserName() +" admin");
-        System.out.println("đăng nhập trang admin");
+        lbUser.setText(user.getUserName());
+       
         
         // Initialize and configure PanelSlide
         panelSlide = new PanelSlide();

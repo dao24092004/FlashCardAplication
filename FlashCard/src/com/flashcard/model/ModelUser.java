@@ -73,7 +73,7 @@ public class ModelUser {
         this.verifyCode = verifyCode;
     }
 
-    public ModelUser(int userID, String userName, String email, String v) {
+    public ModelUser(int userID, String userName, String email, String role) {
         this.userID = userID;
         this.userName = userName;
         this.email = email;
