@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
+import java.io.File;
+
+import javax.swing.ImageIcon;
 
 public class PanelLoading extends javax.swing.JPanel {
 
@@ -19,13 +22,22 @@ public class PanelLoading extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-       // jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/loading.gif"))); // NOI18N
+       // jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/loading.gif"))); 
+        String loadingPath = "src/com/flashcard/icon/pass.png";
+        File loadingFile = new File(loadingPath);
+        if (loadingFile.exists()) {
+        	jLabel1.setIcon(new ImageIcon(loadingFile.getAbsolutePath()));
+        } else {
+            System.out.println("Icon not found at " + loadingPath);
+        }
+
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

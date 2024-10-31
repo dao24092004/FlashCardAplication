@@ -168,8 +168,16 @@ public class Main extends javax.swing.JFrame {
         try {
             ModelUser user = service.login(data);
             if (user != null) {
+            	
                 this.dispose();
-                MainSystem.main(user);
+                System.out.println("User role in login method: " + user.getRole());
+
+                if("admin".equalsIgnoreCase(user.getRole())) {
+                	 new AdminPage(user).setVisible(true);
+                }else {
+                	new UserPage(user).setVisible(true);
+                }
+                
             } else {
                 showMessage(Message.MessageType.ERROR, "Email and Password are incorrect");
             }

@@ -44,7 +44,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         label.setForeground(new Color(7, 164, 121));
         register.add(label);
         MyTextField txtUser = new MyTextField();
-        txtUser.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/user.png")));
+        //txtUser.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/user.png")));
         String userPath = "src/com/flashcard/icon/user.png";
         File userFile = new File(userPath);
         if (userFile.exists()) {
@@ -57,10 +57,24 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         register.add(txtUser, "w 60%");
         MyTextField txtEmail = new MyTextField();
        // txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/mail.png")));
+        String EmailPath = "src/com/flashcard/icon/mail.png";
+        File EmailFile = new File(EmailPath);
+        if (EmailFile.exists()) {
+            txtEmail.setPrefixIcon(new ImageIcon(EmailFile.getAbsolutePath()));
+        } else {
+            System.out.println("Icon not found at " + EmailPath);
+        }
         txtEmail.setHint("Email");
         register.add(txtEmail, "w 60%");
         MyPasswordField txtPass = new MyPasswordField();
        // txtPass.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/pass.png")));
+        String PassPath = "src/com/flashcard/icon/pass.png";
+        File PassFile = new File(PassPath);
+        if (PassFile.exists()) {
+            txtPass.setPrefixIcon(new ImageIcon(PassFile.getAbsolutePath()));
+        } else {
+            System.out.println("Icon not found at " + PassPath);
+        }
         txtPass.setHint("Password");
         register.add(txtPass, "w 60%");
         Button cmd = new Button();
@@ -88,10 +102,24 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login.add(label);
         MyTextField txtEmail = new MyTextField();
         //txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/mail.png")));
+        String EmailPath = "src/com/flashcard/icon/mail.png";
+        File EmailFile = new File(EmailPath);
+        if (EmailFile.exists()) {
+            txtEmail.setPrefixIcon(new ImageIcon(EmailFile.getAbsolutePath()));
+        } else {
+            System.out.println("Icon not found at " + EmailPath);
+        }
         txtEmail.setHint("Email");
         login.add(txtEmail, "w 60%");
         MyPasswordField txtPass = new MyPasswordField();
         //txtPass.setPrefixIcon(new ImageIcon(getClass().getResource("/com/flashcard/icon/pass.png")));
+        String PassPath = "src/com/flashcard/icon/pass.png";
+        File PassFile = new File(PassPath);
+        if (PassFile.exists()) {
+            txtPass.setPrefixIcon(new ImageIcon(PassFile.getAbsolutePath()));
+        } else {
+            System.out.println("Icon not found at " + PassPath);
+        }
         txtPass.setHint("Password");
         login.add(txtPass, "w 60%");
         JButton cmdForget = new JButton("Forgot your password ?");

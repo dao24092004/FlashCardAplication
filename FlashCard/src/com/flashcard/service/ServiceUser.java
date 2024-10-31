@@ -16,31 +16,61 @@ public class ServiceUser {
 
     public ServiceUser() {
         con = DatabaseConnection.getInstance().getConnection();
+        if (con != null) {
+            System.out.println("Database connection established successfully.");
+        } else {
+            System.out.println("Failed to establish database connection.");
+        }
     }
-
     public ModelUser login(ModelLogin login) throws SQLException {
         ModelUser data = null;
-        PreparedStatement p = con.prepareStatement("SELECT UserID, UserName, Email FROM tbl_user WHERE Email = ? AND Password = ? AND Status = 'Verified'");
-        
-        p.setString(1, login.getEmail());
-        p.setString(2, login.getPassword());
-        
-        ResultSet r = p.executeQuery();
-        
-        if (r.next()) {
-            int userID = r.getInt("UserID");
-            String userName = r.getString("UserName");
-            String email = r.getString("Email");
-            data = new ModelUser(userID, userName, email, "");
-            System.out.println("User found: " + email); // In ra email tìm thấy
-        } else {
-            System.out.println("No user found with the provided credentials."); // Không tìm thấy người dùng
+        String email = login.getEmail().trim();
+        String password = login.getPassword().trim();
+
+        // Kiểm tra email và password không được để trống
+        if (email.isEmpty() || password.isEmpty()) {
+            System.out.println("Email và mật khẩu không được để trống.");
+            return null;
         }
-        
-        r.close();
-        p.close();
+
+        System.out.println("Đang thực hiện đăng nhập với Email: " + email);
+
+        String sql = "SELECT UserID, UserName, Email, Role FROM [tbl_user] WHERE Email = ? AND Password = ?";
+        try (PreparedStatement p = con.prepareStatement(sql)) {
+            p.setString(1, email);
+            p.setString(2, password);
+
+            try (ResultSet r = p.executeQuery()) {
+                if (r.next()) {
+                    int userID = r.getInt("UserID");
+                    String userName = r.getString("UserName");
+                    String role = r.getString("Role"); // Lấy vai trò từ kết quả truy vấn
+
+                    // Khởi tạo đối tượng ModelUser với vai trò
+                    data = new ModelUser(userID, userName, email,role);
+                    System.out.println("Đã tìm thấy người dùng: " + email + ", Vai trò: " + role);
+
+                    // Kiểm tra quyền của người dùng
+                    if ("admin".equalsIgnoreCase(role)) {
+                        System.out.println("Đăng nhập với vai trò admin.");
+                        // Thực hiện chuyển hướng đến trang admin
+                    } else {
+                        System.out.println("Đăng nhập với vai trò người dùng.");
+                        // Thực hiện chuyển hướng đến trang người dùng
+                    }
+                } else {
+                    System.out.println("Không tìm thấy người dùng với thông tin đăng nhập đã cung cấp.");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi SQL trong quá trình đăng nhập: " + e.getMessage());
+            e.printStackTrace();
+        }
+
         return data;
     }
+
+
 
 
     public void insertUser(ModelUser user) throws SQLException {

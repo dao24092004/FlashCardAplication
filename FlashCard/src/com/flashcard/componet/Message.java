@@ -4,6 +4,8 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.File;
+
 import javax.swing.ImageIcon;
 
 public class Message extends javax.swing.JPanel {
@@ -30,8 +32,23 @@ public class Message extends javax.swing.JPanel {
         lbMessage.setText(message);
         if (messageType == MessageType.SUCCESS) {
             //lbMessage.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/success.png")));
+        	 String successPath = "src/com/flashcard/icon/pass.png";
+             File successFile = new File(successPath);
+             if (successFile.exists()) {
+            	 lbMessage.setIcon(new ImageIcon(successFile.getAbsolutePath()));
+             } else {
+                 System.out.println("Icon not found at " + successPath);
+             }
+        	
         } else {
             //lbMessage.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/error.png")));
+        	 String errorPath = "src/com/flashcard/icon/error.png";
+             File errorFile = new File(errorPath);
+             if (errorFile.exists()) {
+            	 lbMessage.setIcon(new ImageIcon(errorFile.getAbsolutePath()));
+             } else {
+                 System.out.println("Icon not found at " + errorPath);
+             }
         }
     }
 

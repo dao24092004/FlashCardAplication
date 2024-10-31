@@ -6,7 +6,26 @@ public class ModelUser {
     private String email;
     private String password;
     private String verifyCode;
-    public int getUserID() {
+    private String role;
+    public ModelUser(int userID, String userName, String email, String password, String verifyCode, String role) {
+		super();
+		this.userID = userID;
+		this.userName = userName;
+		this.email = email;
+		this.password = password;
+		this.verifyCode = verifyCode;
+		this.role = role;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public int getUserID() {
         return userID;
     }
 
@@ -54,11 +73,11 @@ public class ModelUser {
         this.verifyCode = verifyCode;
     }
 
-    public ModelUser(int userID, String userName, String email, String password) {
+    public ModelUser(int userID, String userName, String email, String v) {
         this.userID = userID;
         this.userName = userName;
         this.email = email;
-        this.password = password;
+        this.role = role;
     }
 
     public ModelUser() {
