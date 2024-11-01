@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
+
 public class WinButton extends javax.swing.JPanel {
 
     
@@ -13,7 +14,7 @@ public class WinButton extends javax.swing.JPanel {
         setOpaque(false);
     }
     
-    public void initEvent(JFrame fram, PanelBackground panel) {
+    public void initEvent(JFrame fram) {
         close.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -30,10 +31,10 @@ public class WinButton extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (fram.getExtendedState() == JFrame.MAXIMIZED_BOTH) {
-                    panel.setRound(15);
+              //      panel.setRound(15);
                     fram.setExtendedState(JFrame.NORMAL);
                 } else {
-                    panel.setRound(0);
+           //         panel.setRound(0);
                     fram.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 }
             }

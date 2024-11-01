@@ -126,5 +126,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private com.FlashCard.component.Menu menu;
     private com.FlashCard.swing.PanelBorder panelBorder1;
+    private com.FlashCard.swing.WinButton winButton1;
+    private com.FlashCard.swing.WinButton winButton2;
+    private com.FlashCard.swing.WinButton winButton3;
     // End of variables declaration//GEN-END:variables
 }
