@@ -1,4 +1,4 @@
-package com.flashcard.main;
+package com.flashcard.controller;
 
 import com.flashcard.componet.Message;
 import com.flashcard.componet.PanelCover;
@@ -23,7 +23,7 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class Main extends javax.swing.JFrame {
+public class ConntrollerLoginAndRegister extends javax.swing.JFrame {
 
     private final DecimalFormat df = new DecimalFormat("##0.###", DecimalFormatSymbols.getInstance(Locale.US));
     private MigLayout layout;
@@ -38,7 +38,7 @@ public class Main extends javax.swing.JFrame {
     private ServiceUser service;
     private ServiceMail mail;
 
-    public Main() {
+    public ConntrollerLoginAndRegister() {
         initComponents();
         init();
     }
@@ -173,9 +173,9 @@ public class Main extends javax.swing.JFrame {
                 System.out.println("User role in login method: " + user.getRole());
 
                 if("admin".equalsIgnoreCase(user.getRole())) {
-                	 new AdminPage(user).setVisible(true);
+                	 new ConntrollerAdmin(user).setVisible(true);
                 }else {
-                	new UserPage(user).setVisible(true);
+                	new ControllerUser(user).setVisible(true);
                 }
                 
             } else {
@@ -314,13 +314,13 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConntrollerLoginAndRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConntrollerLoginAndRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConntrollerLoginAndRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConntrollerLoginAndRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -332,7 +332,7 @@ public class Main extends javax.swing.JFrame {
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new ConntrollerLoginAndRegister().setVisible(true);
             }
         });
     }

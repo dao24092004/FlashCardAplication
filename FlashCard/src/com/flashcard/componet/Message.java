@@ -9,6 +9,7 @@ import java.io.File;
 import javax.swing.ImageIcon;
 
 public class Message extends javax.swing.JPanel {
+	private int test;
 
     public boolean isShow() {
         return show;

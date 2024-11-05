@@ -1,41 +1,43 @@
-package com.flashcard.main;
+package com.flashcard.controller;
 
 import com.flashcard.model.ModelUser;
 import com.flashcard.componet.PanelSlide;
 import java.awt.Color;
 import javax.swing.JPanel;
 
-public class AdminPage extends javax.swing.JFrame {
+public class ControllerUser extends javax.swing.JFrame {
 
     private final ModelUser user;
     private final PanelSlide panelSlide;
 
-    public AdminPage(ModelUser user) {
+    public ControllerUser(ModelUser user) {
         this.user = user;
         initComponents();
-        getContentPane().setBackground(new Color(255, 255, 255));
-        lbUser.setText(user.getUserName());
-       
+        getContentPane().setBackground(Color.WHITE); // Đặt màu nền trắng
+        lbUser.setText("Welcome, " + user.getUserName() + "uẻ"); // Hiển thị tên người dùng
         
-        // Initialize and configure PanelSlide
+        // Cấu hình PanelSlide
         panelSlide = new PanelSlide();
-        panelSlide.setSize(400, 300); // Set appropriate size for your sliding panel
-        panelSlide.setAnimate(5); // Customize animation speed if needed
+        panelSlide.setSize(400, 300);
+        panelSlide.setAnimate(5);
         
-        // Add components to PanelSlide for demonstration
-        JPanel panel1 = new JPanel();
-        panel1.setBackground(Color.RED);
+        // Khởi tạo các panel con
+        JPanel panel1 = createPanel(Color.RED);
+        JPanel panel2 = createPanel(Color.BLUE);
+        JPanel panel3 = createPanel(Color.GREEN);
         
-        JPanel panel2 = new JPanel();
-        panel2.setBackground(Color.BLUE);
-
-        JPanel panel3 = new JPanel();
-        panel3.setBackground(Color.GREEN);
-        
+        // Thêm panel con vào PanelSlide
         panelSlide.init(panel1, panel2, panel3);
 
-        // Add PanelSlide to MainSystem's layout
+        // Thêm PanelSlide vào UserPage
         add(panelSlide);
+    }
+
+    // Phương thức tạo panel với màu sắc tùy chỉnh
+    private JPanel createPanel(Color color) {
+        JPanel panel = new JPanel();
+        panel.setBackground(color);
+        return panel;
     }
 
     @SuppressWarnings("unchecked")
@@ -46,10 +48,9 @@ public class AdminPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbUser.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lbUser.setFont(new java.awt.Font("sansserif", 1, 18));
         lbUser.setForeground(new java.awt.Color(77, 77, 77));
         lbUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbUser.setText("User Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,11 +74,7 @@ public class AdminPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(ModelUser user) {
-    	
-        java.awt.EventQueue.invokeLater(() -> {
-        	
-            new AdminPage(user).setVisible(true);
-        });
+        java.awt.EventQueue.invokeLater(() -> new ControllerUser(user).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
