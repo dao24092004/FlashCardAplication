@@ -1,10 +1,10 @@
 package com.flashcard.controller;
 
-import com.flashcard.componet.Message;
-import com.flashcard.componet.PanelCover;
-import com.flashcard.componet.PanelLoading;
-import com.flashcard.componet.PanelLoginAndRegister;
-import com.flashcard.componet.PanelVerifyCode;
+import com.flashcard.component.Message;
+import com.flashcard.component.PanelCover;
+import com.flashcard.component.PanelLoading;
+import com.flashcard.component.PanelLoginAndRegister;
+import com.flashcard.component.PanelVerifyCode;
 import com.flashcard.connection.DatabaseConnection;
 import com.flashcard.model.ModelLogin;
 import com.flashcard.model.ModelMessage;
@@ -173,9 +173,9 @@ public class ConntrollerLoginAndRegister extends javax.swing.JFrame {
                 System.out.println("User role in login method: " + user.getRole());
 
                 if("admin".equalsIgnoreCase(user.getRole())) {
-                	 new ConntrollerAdmin(user).setVisible(true);
+                	 new ControllerAdmin().setVisible(true);
                 }else {
-                	new ControllerUser(user).setVisible(true);
+                	new ControllerUser().setVisible(true);
                 }
                 
             } else {

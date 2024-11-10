@@ -1,83 +1,135 @@
+
 package com.flashcard.controller;
 
-import com.flashcard.model.ModelUser;
-import com.flashcard.componet.PanelSlide;
+import com.flashcard.event.EventMenuSelected;
+
+import com.flashcard.form.Form_1;
+import com.flashcard.form.Form_2;
+import com.flashcard.form.Form_3;
+import com.flashcard.form.Form_Home;
+
 import java.awt.Color;
-import javax.swing.JPanel;
+import javax.swing.JComponent;
+
 
 public class ControllerUser extends javax.swing.JFrame {
 
-    private final ModelUser user;
-    private final PanelSlide panelSlide;
+   
+    private Form_Home home;
+    private Form_1 form1;
+    private Form_2 form2;
+    private Form_3 form3;
 
-    public ControllerUser(ModelUser user) {
-        this.user = user;
+    public ControllerUser() {
         initComponents();
-        getContentPane().setBackground(Color.WHITE); // Đặt màu nền trắng
-        lbUser.setText("Welcome, " + user.getUserName() + "uẻ"); // Hiển thị tên người dùng
+        setBackground(new Color(0, 0, 0, 0));
+        home = new Form_Home();
+        form1 = new Form_1();
+        form2 = new Form_2();
+        form3 = new Form_3();
+        menu.initMoving(ControllerUser.this);
+        menu.addEventMenuSelected(new EventMenuSelected() {
+            @Override
+            public void selected(int index) {
+                if (index == 0) {
+                    setForm(home);
+                } else if (index == 1) {
+                    setForm(form1);
+                } else if (index == 2) {
+                    setForm(form2);
+                } else if (index == 3) {
+                    setForm(form3);
+                }
+            }
+        });
         
-        // Cấu hình PanelSlide
-        panelSlide = new PanelSlide();
-        panelSlide.setSize(400, 300);
-        panelSlide.setAnimate(5);
-        
-        // Khởi tạo các panel con
-        JPanel panel1 = createPanel(Color.RED);
-        JPanel panel2 = createPanel(Color.BLUE);
-        JPanel panel3 = createPanel(Color.GREEN);
-        
-        // Thêm panel con vào PanelSlide
-        panelSlide.init(panel1, panel2, panel3);
-
-        // Thêm PanelSlide vào UserPage
-        add(panelSlide);
+        setForm(new Form_Home());
     }
 
-    // Phương thức tạo panel với màu sắc tùy chỉnh
-    private JPanel createPanel(Color color) {
-        JPanel panel = new JPanel();
-        panel.setBackground(color);
-        return panel;
+    private void setForm(JComponent com) {
+        mainPanel.removeAll();
+        mainPanel.add(com);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }
 
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbUser = new javax.swing.JLabel();
+        panelBorder1 = new com.flashcard.swing.PanelBorder();
+        menu = new com.flashcard.component.Menu();
+        header2 = new com.flashcard.component.Header();
+        mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        lbUser.setFont(new java.awt.Font("sansserif", 1, 18));
-        lbUser.setForeground(new java.awt.Color(77, 77, 77));
-        lbUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
+        mainPanel.setOpaque(false);
+        mainPanel.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
+        panelBorder1.setLayout(panelBorder1Layout);
+        panelBorder1Layout.setHorizontalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(header2, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        panelBorder1Layout.setVerticalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(518, 518, 518)
-                .addComponent(lbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(lbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(350, Short.MAX_VALUE))
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(ModelUser user) {
-        java.awt.EventQueue.invokeLater(() -> new ControllerUser(user).setVisible(true));
+   
+    public static void main(String args[]) {
+      
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new ControllerUser().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lbUser;
+    private com.flashcard.component.Header header2;
+    private javax.swing.JPanel mainPanel;
+    private com.flashcard.component.Menu menu;
+    private com.flashcard.swing.PanelBorder panelBorder1;
+    private com.flashcard.swing.WinButton winButton1;
+    private com.flashcard.swing.WinButton winButton2;
+    private com.flashcard.swing.WinButton winButton3;
     // End of variables declaration//GEN-END:variables
 }
